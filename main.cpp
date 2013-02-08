@@ -1,6 +1,6 @@
 #include <Arduino.h>
-#include "SPI.h"
-#include "Ethernet.h"
+#include "libs/SPI.h"
+#include "libs/Ethernet.h"
 
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED }; // Mac address
 IPAddress server(212,232,31,29); // Public IRC server - kif.entropynet.net - IPAddress server(212,232,31,29); // Private, local IRC server - IPAddress server(192,168,1,40);
