@@ -1,6 +1,6 @@
 MCU=atmega328p # Select your MCU here. Arduino Uno has the atmega328p mcu. For the MCUs of other Arduino boards, please consult arduino.cc
 CPU=16000000L # 16 MHz (arduino has an external clock, this should be the same on most Arduino boards)
-SOURCES_PROJECT=main.cpp # Add project source files here
+SOURCES_PROJECT=main.cpp SPI.cpp Dhcp.cpp Dns.cpp EthernetClient.cpp Ethernet.cpp EthernetServer.cpp EthernetUdp.cpp socket.cpp w5100.cpp # Add project source files here
 PROJECT_NAME=main # result will be main.hex, then
 PROGRAMMER=arduino # set your programmer here, I use the stk500. On the standard arduino isp it's "arduino"
 PORT=/dev/ttyACM0 # set the port for the connection to your programmer here. Arduino sits at /dev/ttyACM0
