@@ -11,7 +11,7 @@
 #define	W5100_H_INCLUDED
 
 #include <avr/pgmspace.h>
-#include "SPI.h"
+#include <SPI.h>
 
 #define MAX_SOCK_NUM 4
 
