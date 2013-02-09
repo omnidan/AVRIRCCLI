@@ -146,7 +146,3 @@ void loop() {
   while(true); // TODO: Retry
  }
 }
-
-
-
-

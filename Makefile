@@ -1,6 +1,6 @@
 MCU=atmega328p # Select your MCU here. Arduino Uno has the atmega328p mcu. For the MCUs of other Arduino boards, please consult arduino.cc
 CPU=16000000L # 16 MHz (arduino has an external clock, this should be the same on most Arduino boards)
-SOURCES_PROJECT=main.cpp libs/SPI/SPI.cpp libs/Ethernet/Dns.cpp libs/Ethernet/EthernetClient.cpp libs/Ethernet/Ethernet.cpp libs/Ethernet/EthernetUdp.cpp libs/Ethernet/utility/socket.cpp libs/Ethernet/utility/w5100.cpp
+SOURCES_PROJECT=AVRIRCCLI.cpp libs/SPI/SPI.cpp libs/Ethernet/Dns.cpp libs/Ethernet/EthernetClient.cpp libs/Ethernet/Ethernet.cpp libs/Ethernet/EthernetUdp.cpp libs/Ethernet/utility/socket.cpp libs/Ethernet/utility/w5100.cpp
 PROJECT_NAME=AVRIRCCLI
 PROGRAMMER=arduino # set your programmer here, I use the stk500. On the standard arduino isp it's "arduino"
 PORT=/dev/ttyACM0 # set the port for the connection to your programmer here. Arduino sits at /dev/ttyACM0
