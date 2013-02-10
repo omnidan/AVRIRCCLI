@@ -74,16 +74,12 @@ void privmsg(char *channel, char *text) {
 }
 
 void parsemsg(char *nick, char *user, char *server, char *channel, char *text) {
- if (strstr(text, "!ping") != NULL) privmsg(channel, "pong");
- if (strstr(text, "!nc") != NULL) privmsg(channel, "nobody cares mh0");
+ if (strstr(text, "ping") != NULL) privmsg(channel, "pong");
  if (strstr(text, "turn light off") != NULL) {
   analogWrite(A0, 0);
  }
  if (strstr(text, "turn light on") != NULL) {
   analogWrite(A0, 1023);
- }
- if (strstr(text, "pony") != NULL) {
-  privmsg(channel, "I'm not a pony, I'm just a chip.");
  }
  if (strstr(text, "show light status") != NULL) {
   if (analogRead(A0) == 0) privmsg(channel, "The light is off.");
