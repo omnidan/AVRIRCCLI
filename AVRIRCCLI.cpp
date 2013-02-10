@@ -4,49 +4,58 @@
 
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED }; // Mac address
 IPAddress server(212,232,31,29); // Public IRC server - kif.entropynet.net - IPAddress server(212,232,31,29); // Private, local IRC server - IPAddress server(192,168,1,40);
+const char *nick = "arduino"; // Nickname on the IRC server
+const char *chan = "#arduino"; // Channel on the IRC server
 
 // Local settings
-IPAddress ip(192,168,1,41);
-IPAddress dnss(192,168,1,40);
-IPAddress gw(192,168,1,42);
+IPAddress ip(192,168,1,41); // IP address of the Arduino
+IPAddress dnss(192,168,1,40); // IP address of the DNS server (use 8.8.8.8 if you don't have a local dnsmasq server like me)
+IPAddress gw(192,168,1,42); // IP address of the gateway, this is the machine that forwards the traffic to the internet for me.
 
 // Initialise variables
 EthernetClient client;
 char *msg;
 
 void setup() {
- Ethernet.begin(mac, ip, dnss, gw);
  Serial.begin(9600);
  while (!Serial) {
   ; // wait for serial port to connect. Needed for Leonardo only
  }
  
- Serial.println("booting...");
+ Serial.println("Booting Ethernet chip...");
+ 
+ Ethernet.begin(mac, ip, dnss, gw);
  
  // Wait for the ethernet chip to initialise
  delay(750);
- Serial.println("connecting...");
  
- // if you get a connection, report back via serial:
+ Serial.print("Connecting to the server... ");
  if (client.connect(server, 6667)) {
-  Serial.println("connected");
+  Serial.println("connected!");
  } 
  else {
-  // if you didn't get a connection to the server:
-  Serial.println("connection failed");
+  Serial.println("connection failed.");
  }
  
  if (client.connected()) {
-  client.print("NICK arduino\r\n");
-  client.print("USER arduino arduino.magic arduino :AVRIRCCLI\r\n");
+  client.print("NICK ");
+  client.print(nick);
+  client.print("\r\n");
+  client.print("USER ");
+  client.print(nick); client.print(" ");
+  client.print(nick); client.print(" ");
+  client.print(nick); client.print(" ");
+  client.print(":AVRIRCCLI\r\n");
  }
  
  msg = (char *)malloc(256);
+ 
+ // Turn light off.
  analogWrite(A0, 0);
 }
 
 void startup() {
- client.print("JOIN #lounge\r\n");
+ client.print("JOIN #arduino\r\n");
  client.print("PRIVMSG #lounge :Hi, my name is ");
  #if defined(__AVR_ATmega328P__)
  client.print("ATmega328P");
